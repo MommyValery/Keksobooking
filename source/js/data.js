@@ -2,8 +2,8 @@ import { checkFormValidity } from './form.js';
 import { resetForm } from './form.js';
 
 const Urls = {
-  GET: 'https://22.javascript.pages.academy/keksobooking/data',
-  POST: 'https://22.javascript.pages.academy/keksobooking',
+  GET: 'https://23.javascript.htmlacademy.pro/keksobooking/data',
+  POST: 'https://23.javascript.htmlacademy.pro/keksobooking',
 }
 
 const getData = (onSuccess) => {
