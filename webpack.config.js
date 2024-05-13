@@ -8,17 +8,5 @@ module.exports = {
     filename: 'main.bundle.js',
     path: path.resolve(__dirname, 'build/js'),
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.(png|jpe?g|gif)$/i,
-  //       use: [
-  //         {
-  //           loader: 'file-loader',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-};
+}
 

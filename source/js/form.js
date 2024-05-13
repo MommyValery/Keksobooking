@@ -94,7 +94,7 @@ const TimeOutIsIn = timein.addEventListener('change', () => {
 });
 
 
-// функция синхрона комнат и мест (сделать сеткастомвалидити, ниже есть комментарии)
+// функция синхрона комнат и мест
 const formRoomNumber = document.querySelector('#room_number');
 const formCapacity = document.querySelector('#capacity');
 const roomForGuest = {
@@ -185,15 +185,6 @@ const resetForm = () => {
   document.querySelector('.ad-form').reset();
   resetAddress();
 }
-
-
-// короче не могу, при клике сбрасывается адрес
-// const clickResetButton = () => {
-//   const resetButton = document.querySelector('button[type="reset"]');
-//   resetButton.addEventListener('click', resetForm())
-// }
-
-// clickResetButton();
 
 adSubmit();
 

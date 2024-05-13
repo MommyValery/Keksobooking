@@ -69,7 +69,7 @@ const closeErrorModal = () => {
   closeModal(errorTemplate);
 }
 
-// вообще непонятно, ctrlC ctrlV
+
 const debounce = function (cb, interval) {
   let lastTimeout = null;
   return () => {
@@ -82,7 +82,6 @@ const debounce = function (cb, interval) {
     }, interval);
   };
 };
-
 
 
 export { createPhotoOffer, createOfferFeatures, showSuccessMessage as showSuccess, showErrorMessage as showErr, debounce, closeErrorModal, closeModal }

@@ -1,7 +1,5 @@
-// import { MAX_OFFERS } from './map.js';
+ import { MAX_OFFERS } from './map.js';
 
-
-const DEFAULT_VALUE = 'any';
 const housingPrice = {
   'low': {
     from: 0,
@@ -16,46 +14,47 @@ const housingPrice = {
     to: Infinity,
   },
 }
-const filters = Array.from(document.querySelector('.map__filters').children);
 
 const filterRules = {
-  'housing-type': (data, filter) => {
-    return filter.value === data.offer.type;
-  },
-  'housing-price': (data, filter) => {
-    return data.offer.price >= housingPrice[filter.value].from && data.offer.price < housingPrice[filter.value].to;
-  },
-  'housing-rooms': (data, filter) => {
-    return filter.value === data.offer.rooms.toString();
-  },
-  'housing-guests': (data, filter) => {
-    return filter.value === data.offer.guests.toString();
-  },
-  'housing-features': (data, filter) => {
-    const checkedCheckboxes = Array.from(filter.querySelectorAll('input[type="checkbox"]:checked'));
-    return checkedCheckboxes.every(checkbox => {
-      return data.offer.features.some(feature => {
-        return feature === checkbox.value;
-      });
-    });
-  },
+    'housing-type': (data, filter) => {
+        return filter.value === data.offer.type;
+    },
+    'housing-price': (data, filter) => {
+        return data.offer.price >= housingPrice[filter.value].from && data.offer.price < housingPrice[filter.value].to;
+    },
+    'housing-rooms': (data, filter) => {
+        return filter.value === data.offer.rooms.toString();
+    },
+    'housing-guests': (data, filter) => {
+        return filter.value === data.offer.guests.toString();
+    },
+    'housing-features': (data, filter) => {
+    const checkedCheckboxes = Array.from(filter.querySelectorAll('input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.value);
+        return checkedCheckboxes.every(checkbox => {
+            return data.offer.features? 
+           data.offer.features.includes(checkbox)
+             : false;
+    }); 
+    },
 };
+
+
+const filters = Array.from(document.querySelector('.map__filters').children);
 
 const filterOffers = (data) => {
-  let offers = [];
-  let result;
-  for (let i = 0; i < data.length;  i++) {
-    result = filters.every(filter => {
-      return filter.value === DEFAULT_VALUE ? true : filterRules[filter.id](data[i], filter);
-    });
-    if (result) {
-      offers.push(data[i]);
-    }
-  }
-  // offers.slice(0, MAX_OFFERS);
-  return offers;
+    let offers = []; 
+  for (let i = 0; i < data.length;  i++) { 
+      let result = filters.every(filter => { 
+        console.log(filter);
+      return filter.value === "any" ? true : filterRules[filter.id](data[i], filter); 
+    }); 
+    if (result) { 
+      offers.push(data[i]); 
+    } 
+  } 
+   return offers.slice(0, MAX_OFFERS); 
 };
-
 
 
 export { filterOffers}

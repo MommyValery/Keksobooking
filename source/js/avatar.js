@@ -5,7 +5,6 @@ const imgInput = document.querySelector('.ad-form__upload input[type="file"]');
 const imgPreview = document.querySelector('.ad-form__photo');
 
 
-// все работает, но какое-то маленькое изображение, нормально ли это?
 const getAvatar = () => {
   avatarInput.addEventListener('change', () => {
     const file = avatarInput.files[0];
